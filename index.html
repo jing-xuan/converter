@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Converter</title>
+        <style>
+            body {
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            h1 {
+                text-align: center;
+                margin-top: 0px;
+                margin-bottom: 50px;
+                font-family: Raleway, sans-serif;
+                font-size: 3em;
+            }
+            p {
+                font-family: Raleway, sans-serif;
+                margin: 3px;
+                font-size: 1.7em;
+                font-weight: 500;
+            }
+            table {
+                align-self: center;
+                padding: 40px 20px;
+                border-radius: 20px;
+                background-color: red;
+                background-color:  #d5f5e3;
+                box-shadow: 0px 0px 8px 3px #888;
+            }
+            input {
+                font-size: 1.7em;
+                padding: 7px;
+                border-radius: 10px;
+                border: none;
+                border: solid 2px;
+            }
+            tr:nth-child(2n) td {
+                padding-bottom: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Bin - Hex - Dec Converter</h1>
+        <table>
+            <tr>
+                <td>
+                    <p>Bin</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" size = "50" id="binNum" name="binNum">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Hex</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" size = "50" id="hexNum" name="hexNum">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Dec</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" size = "50" id="decNum" name="decNum">
+                </td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        const hexInput = document.getElementById("hexNum");
+        const binInput = document.getElementById("binNum");
+        const decInput = document.getElementById("decNum");
+
+        hexInput.addEventListener('change', hexVal);
+        binInput.addEventListener('change', binVal);
+        decInput.addEventListener('change', decVal);
+
+        function hexVal(e) {
+            binInput.value = parseInt(e.target.value, 16).toString(2).toUpperCase();
+            decInput.value = parseInt(e.target.value, 16).toString(10).toUpperCase();
+        }
+        function binVal(e) {
+            hexInput.value = parseInt(e.target.value, 2).toString(16).toUpperCase();
+            decInput.value = parseInt(e.target.value, 2).toString(10).toUpperCase();
+        }
+        function decVal(e) {
+            hexInput.value = parseInt(e.target.value, 10).toString(16).toUpperCase();
+            binInput.value = parseInt(e.target.value, 10).toString(2).toUpperCase();
+        }
+    </script>
+</html>
